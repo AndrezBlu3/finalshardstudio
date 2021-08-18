@@ -1,18 +1,40 @@
 ---
 layout: default
-title: settings.site
+title: Shard  Studio
 path: home
 ---
 
-<div class="container mx-auto lg:h-screen flex flex-col justify-center items-center">
+<div class="container flex flex-col items-center justify-center mx-auto lg:h-screen">
   <h1>
     Welcome to
-    <strong class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+    <strong class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
       {{settings.site}}
     </strong>
   </h1>
-
-  <p x-text="{settings.site}"></p>
+  <div id="magic" class="w-1/2 h-auto p-3 font-mono text-lg bg-gray-900 container-magic" x-data="{ title : '{{settings.description}}' }">
+    <p class="p-3 text-white container-magic-text">{{settings.description}}</p>
+  </div>
+  
 
   {% include "./_includes/partials/content.html" %}
 </div>
+
+
+<script src="/static/js/three.min.js"></script>
+<script src="/static/js/halo.min.js"></script>
+<script>
+VANTA.HALO({
+  el: "#magic",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 50.00,
+  minWidth: 100.00,
+  baseColor: 0x133f91,
+  backgroundColor: 0x191a1e,
+  amplitudeFactor: 2.70,
+  xOffset: -0.15,
+  yOffset: 0.03,
+  size: 1.40
+})
+</script>
