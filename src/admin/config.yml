@@ -36,7 +36,7 @@ collections:
     editor:
       preview: false
     files:
-      - label: "Navigation"
+      - label: "Menu"
         name: "items"
         file: "src/_data/navigation.yaml"
         fields:
@@ -46,9 +46,9 @@ collections:
             allow_add: false
             collapsed: false
             fields:
-              - { label: Title, name: text, widget: string }
+              - { label: Titulo, name: text, widget: string }
               - { label: URL, name: url, widget: string }
-      - label: "Quick Links"
+      - label: "Links Principales"
         name: "links"
         file: "src/_data/quicklinks.yaml"
         fields:
@@ -57,13 +57,14 @@ collections:
             widget: list
             collapsed: false
             fields:
-              - { label: Title, name: title, widget: string }
+              - { label: Titulo, name: title, widget: string }
               - { label: URL, name: url, widget: string }
+              - { label: Thumbnail, name: thumbnail, widget: image, choose_url: true}
               - { label: Description, name: desc, widget: string }
-      - label: "Meta Settings"
+      - label: "Opciones"
         name: "settings"
         file: "src/_data/settings.yaml"
         fields:
-          - { label: Name, name: name, widget: string }
-          - { label: Author, name: author, widget: string }
+          - { label: Nombre del sitio, name: site, widget: string }
+          - { label: Descripcion, name: description, widget: string }
           - { label: URL, name: url, widget: string }
