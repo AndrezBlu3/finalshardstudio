@@ -11,8 +11,8 @@ path: home
       {{settings.site}}
     </strong>
   </h1>
-  <div id="magic" class="w-1/2 h-auto p-3 font-mono text-lg bg-gray-900 container-magic" x-data="{ title : '{{settings.description}}' }">
-    <p class="p-3 text-white container-magic-text">{{settings.description}}</p>
+  <div id="magic" class="w-1/2 h-auto p-3 text-lg bg-gray-900 container-magic" x-data="{ title : '{{settings.description}}' }">
+    <p class="p-3 font-light text-white container-magic-text sm:text-5xl">{{settings.description}}</p>
   </div>
   
 
@@ -23,18 +23,17 @@ path: home
 <script src="/static/js/three.min.js"></script>
 <script src="/static/js/halo.min.js"></script>
 <script>
-VANTA.HALO({
-  el: "#magic",
-  mouseControls: true,
-  touchControls: true,
-  gyroControls: false,
-  minHeight: 50.00,
-  minWidth: 100.00,
-  baseColor: 0x133f91,
-  backgroundColor: 0x191a1e,
-  amplitudeFactor: 2.70,
-  xOffset: -0.15,
-  yOffset: 0.03,
-  size: 1.40
-})
+  VANTA.CELLS({
+    el: "#magic",
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 50.00,
+    minWidth: 200.00,
+    scale: 0.800,
+    color1: 0x5c0ff,
+    color2: 0x212472,
+    size: 1.10,
+    speed: 0.90
+  });
 </script>
