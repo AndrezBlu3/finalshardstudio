@@ -1,8 +1,10 @@
 module.exports = {
+  mode: 'jit',
   purge: {
     mode: 'all',
     enabled: true,
-    content: ["./**/*.html"],
+    content: ["./**/*.html",
+    './src/**/*.{js,jsx,ts,tsx,vue}',],
     options: {
       whitelist: [],
     },
