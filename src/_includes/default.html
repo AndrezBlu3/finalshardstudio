@@ -29,7 +29,7 @@
       width: 100vw;
       height: 100vh;" id="c">
     </canvas>
-    <div class="container relative flex">
+    <div class="container relative flex" id="d">
       <div class="container flex flex-col items-center h-screen px-5 py-24 mx-aut md:flex-row" style="position:absolute;">
         <div class="flex flex-col items-center mb-16 text-left lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 md:items-start md:text-left md:mb-0">
           <h1 class="mb-4 font-medium text-white">
@@ -804,8 +804,12 @@ function calcPageFillRadius(x, y) {
 }
 
 function addClickListeners() {
-  document.addEventListener("touchstart", handleEvent);
-  document.addEventListener("mousedown", handleEvent);
+  var el = document.getElementById("c");
+  el.addEventListener("touchstart", handleEvent);
+  el.addEventListener("mousedown", handleEvent);
+  var el2 = document.getElementById("d");
+  el2.addEventListener("touchstart", handleEvent);
+  el2.addEventListener("mousedown", handleEvent);
 };
 
 function handleEvent(e) {
@@ -955,12 +959,19 @@ function handleInactiveUser() {
   
   function clearInactiveTimeout() {
     clearTimeout(inactive);
-    document.removeEventListener("mousedown", clearInactiveTimeout);
-    document.removeEventListener("touchstart", clearInactiveTimeout);
+    var el = document.getElementById("c");
+    el.removeEventListener("mousedown", clearInactiveTimeout);
+    el.removeEventListener("touchstart", clearInactiveTimeout);
+    var el2 = document.getElementById("d");
+    el2.removeEventListener("mousedown", clearInactiveTimeout);
+    el2.removeEventListener("touchstart", clearInactiveTimeout);
   }
-  
-  document.addEventListener("mousedown", clearInactiveTimeout);
-  document.addEventListener("touchstart", clearInactiveTimeout);
+  var el = document.getElementById("c");
+  el.addEventListener("mousedown", clearInactiveTimeout);
+  el.addEventListener("touchstart", clearInactiveTimeout)
+  var el2 = document.getElementById("d");
+  el2.addEventListener("mousedown", clearInactiveTimeout);
+  el2.addEventListener("touchstart", clearInactiveTimeout);
 }
 
 function startFauxClicking() {
