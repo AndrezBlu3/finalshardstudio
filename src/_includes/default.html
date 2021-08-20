@@ -24,13 +24,13 @@
   </head>
   <body>
     {% include "./partials/navbar.html" %}
-    <section class="relative h-screen overflow-hidden text-white bg-gray-800 body-font">
+    <section class="relative h-screen pb-0 overflow-hidden text-white bg-gray-800 body-font">
       <canvas style="position:absolute;
       width: 100vw;
       height: 100vh;" id="c">
     </canvas>
     <div class="container relative flex" id="d">
-      <div class="container flex flex-col items-center h-screen px-5 py-24 mx-aut md:flex-row" style="position:absolute;">
+      <div class="container flex flex-col items-center px-5 py-24 md:h-screen mx-aut md:flex-row" style="position:absolute;">
         <div class="flex flex-col items-center mb-16 text-left lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 md:items-start md:text-left md:mb-0">
           <h1 class="items-center inline-block w-full mb-4 font-medium text-white md:items-start">
             <div class="flex items-center w-full mb-2 text-center md:items-start md:text-left" id="greeting">Hello</div>
@@ -40,19 +40,21 @@
             </strong>
             </div>
           </h1>
-          <p class="mb-8 leading-relaxed prose text-center text-white md:text-left md:prose-xl">Creamos un sentido de comunidad entre profesionales y creadores.</p>
-          <div class="flex justify-center">
+          <p class="leading-relaxed prose text-center text-white md:text-left md:prose-xl">Creamos un sentido de comunidad entre profesionales y creadores.</p>
+          <div class="flex justify-center mt-4">
             <div class="button-container-1">
             <span class="mas">Conoce mas</span>
             <button onclick="goToPage();" href="#">Conoce mas</button>
             </div>
           </div>
         </div>
-        <div class="w-5/6 overflow-hidden lg:max-w-lg lg:w-full md:w-1/2">
-          <main role="main" class="overflow-hidden">
-            <div class="overflow-hidden"><lottie-player class="animate__animated animate__flip animate__slow" src="https://assets5.lottiefiles.com/packages/lf20_3y2hp1nh.json"  background="transparent"  speed="1" autoplay></lottie-player></div>
+        <div class="w-5/6 lg:max-w-lg lg:w-full md:w-1/2">
+          <main role="main">
+            <div class="overflow-hidden">
+              <lottie-player class="animate__animated animate__flip animate__slow" src="https://assets5.lottiefiles.com/packages/lf20_3y2hp1nh.json"  background="transparent"  speed="1" autoplay></lottie-player>
+              <p class="text-sm font-thin prose text-center text-white animate__animated animate__slideInUp animate__slow text-opacity-90"><a href="https://es.wikipedia.org/wiki/Arthur_C._Clarke" class="text-white border-b-0 hover:text-blue-600 hover:border-b-2 hover:border-blue-600 visited:text-white " target="_blank">Arthur C, Clarke</a>: "Cualquier tecnología suficientemente avanzada es indistinguible de la magia." </p>
+            </div>
           </main>
-          <p class="text-sm font-thin prose text-center text-white text-opacity-90">Arthur C, Clarke :"Cualquier tecnología suficientemente avanzada es indistinguible de la magia"</p>
         </div>
       </div>
     </div>
