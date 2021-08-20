@@ -50,14 +50,14 @@
           <main role="main" class="overflow-hidden">
             <div class="overflow-hidden"><lottie-player class="animate__animated animate__flip animate__slow" src="https://assets5.lottiefiles.com/packages/lf20_3y2hp1nh.json"  background="transparent"  speed="1" autoplay></lottie-player></div>
           </main>
-          <p class="text-sm font-thin prose text-center text-white text-opacity-60">Arthur C, Clarke :"Cualquier tecnología suficientemente avanzada es indistinguible de la magia"</p>
+          <p class="text-sm font-thin prose text-center text-white text-opacity-90">Arthur C, Clarke :"Cualquier tecnología suficientemente avanzada es indistinguible de la magia"</p>
         </div>
       </div>
     </div>
     
       
     </section>
-    <section class="text-gray-700 border-t border-gray-200 body-font">
+    <section id="servicios" class="text-gray-700 border-t border-gray-200 body-font">
       <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-col w-full mb-20 text-center">
           <h2 class="mb-1 text-xs font-medium tracking-widest text-blue-500 title-font">Prebuilt for performance and deployed directly to netlify global edge network.</h2>
@@ -763,7 +763,7 @@
       }
       
     function goToPage(){
-      window.location='http://www.example.com';
+      window.location='#servicios';
     }
     </script>
 
@@ -777,7 +777,7 @@ var animations = [];
 var circles = [];
 
 var colorPicker = (function() {
-  var colors = ["#3344ff", "#FFBE53", "#2980B9", "#282741"];
+  var colors = ["#3344ff", "#FF7353", "#2980B9", "#282741"];
   var index = 0;
   function next() {
     index = index++ < colors.length-1 ? index : 0;
