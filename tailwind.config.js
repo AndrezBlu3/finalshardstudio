@@ -20,6 +20,14 @@ module.exports = {
       colors: {},
     },
   },
-  variants: {},
-  plugins: [require("@tailwindcss/typography")],
+  variants: {
+    extend: {
+      ringWidth: ['hover', 'active'],
+    }
+  },
+  plugins: 
+  [
+  require("@tailwindcss/typography"),
+  require('@tailwindcss/forms'),
+  ],
 };
