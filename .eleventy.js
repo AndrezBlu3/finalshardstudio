@@ -36,6 +36,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy("./src/static/js/halo.min.js");
   eleventyConfig.addPassthroughCopy("./src/static/js/three.min.js");
+  eleventyConfig.addPassthroughCopy("./src/static/css/animate.css");
   // Copy Image Folder to /_site
   eleventyConfig.addPassthroughCopy("./src/static/img");
 

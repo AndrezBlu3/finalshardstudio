@@ -10,6 +10,9 @@ module.exports = {
     },
   },
   theme: {
+    fontFamily: {
+      'quicksand': ['Quicksand','sans-serif']
+    },
     container: {
       center: true,
     },
