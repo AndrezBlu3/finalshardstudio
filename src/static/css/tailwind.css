@@ -185,7 +185,7 @@ h3 {
   z-index: 999;
   -webkit-animation: underline-gradient 6s linear infinite;
           animation: underline-gradient 6s linear infinite;
-  background-image: linear-gradient(90deg, rgba(122, 95, 255, 0.8) 15%, rgba(88, 194, 255, 0.6) 35%, rgba(122, 95, 255, 0.8) 85%);
+  background-image: linear-gradient(90deg, rgba(122, 95, 255, 0.8) 15%, rgba(136, 211, 255, 0.76) 35%, rgba(122, 95, 255, 0.8) 85%);
 }
 
 
