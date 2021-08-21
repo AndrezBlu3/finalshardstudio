@@ -790,7 +790,7 @@
             fetch('/', {
               method: 'POST',
               headers: { "Content-Type": "application/x-www-form-urlencoded" },
-              body: new URLSearchParams(this.formData).toString()
+              body: new URLSearchParams(this.data).toString()
             })
             .then(() => {
                 this.message = 'Enviado - Nos pondremos en contacto contigo'
