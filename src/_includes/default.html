@@ -587,9 +587,11 @@
           <h2 class="mb-1 text-lg font-medium text-gray-900 title-font">Contacto</h2>
           <p class="mb-5 leading-relaxed text-gray-600">Escríbenos, nosotros no ponemos en contacto contigo.</p>
           <form name="contacto" method="POST" data-netlify="true" x-data="{
+            buttonLabel: 'Enviar',
             name : '',
             message: '',
             email: '',
+            alert: '',
            }"
             x-on:submit.prevent="submitMessage(name, email, message);"
             id="contact">
@@ -598,7 +600,7 @@
             <input x-model="email" name="email" class="w-full px-4 py-2 mb-4 text-base bg-white border border-gray-400 rounded focus:outline-none focus:border-blue-500" placeholder="Escribe tu correo electronico" type="email" required>
             <textarea x-model="message" name="mensaje" class="w-full h-32 px-4 py-2 mb-4 text-base bg-white border border-gray-400 rounded resize-none focus:outline-none focus:border-blue-500" placeholder="Escribe tus datos de contacto"></textarea>
             <button x-text="buttonLabel" type="submit" class="px-6 py-2 text-lg text-white bg-blue-500 border-0 rounded focus:outline-none hover:ring hover:ring-blue-300 hover:bg-blue-700">Enviar</button>
-            <p class="mt-3 text-xs text-gray-500" x-text="message"></p>
+            <p class="mt-3 text-xs text-gray-500" x-text="alert"></p>
           </form>
         </div>
       </div>
@@ -781,6 +783,7 @@
             if (response.ok) {
               formElement.reset();
               alert("Thank you for your message!");
+              this.alert = "Mensaje enviado";
             } else {
               throw new Error(`Something went wrong: ${response.statusText}`);
             }
