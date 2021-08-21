@@ -586,8 +586,14 @@
         <div class="relative z-10 flex flex-col w-full p-8 mt-10 bg-white rounded-lg lg:w-1/3 md:w-1/2 md:ml-auto md:mt-0">
           <h2 class="mb-1 text-lg font-medium text-gray-900 title-font">Contacto</h2>
           <p class="mb-5 leading-relaxed text-gray-600">Escríbenos, nosotros no ponemos en contacto contigo.</p>
-          <form id="contactForm" name="contacto" method="POST" data-netlify="true" x-data="contactForm()"  @submit.prevent="submitData">
-            <input type="hidden" name="form-name" value="contactForm" />
+          <form name="contacto" method="POST" data-netlify="true" x-data="{
+            name : '',
+            message: '',
+            email: '',
+           }"
+            x-on:submit.prevent="submitMessage(name, email, message);"
+            id="contact">
+            <input type="hidden" name="form-name" value="contact" />
             <input name="nombre" placeholder="Tu nombre" type="text" class="w-full px-4 py-2 mb-4 text-base bg-white border border-gray-400 rounded focus:outline-none focus:border-blue-500" x-model="formData.name" required>
             <input x-model="formData.email" name="email" class="w-full px-4 py-2 mb-4 text-base bg-white border border-gray-400 rounded focus:outline-none focus:border-blue-500" placeholder="Escribe tu correo electronico" type="email" required>
             <textarea x-model="formData.message" name="mensaje" class="w-full h-32 px-4 py-2 mb-4 text-base bg-white border border-gray-400 rounded resize-none focus:outline-none focus:border-blue-500" placeholder="Escribe tus datos de contacto"></textarea>
@@ -757,53 +763,29 @@
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/1.0.0/anime.min.js" ></script>
     <script>
-
-      function encode(data) {
-        return Object.keys(data)
-            .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-            .join("&")
-      }
       
-      
-      function contactForm() {
-        return {
-          
-          formData: {
-            myForm: document.getElementById('contactForm'),
-            name: '',
-            email: '',
-            message: '',
-            data: '',
-          },
-          message: '',
-              
-          loading: false,
-          buttonLabel: 'Submit',
-
-          submitData() {
-
-            this.buttonLabel = 'Enviando...';
-            this.loading = true;
-            this.message = '';
-            this.data = new FormData(this.formData.myForm);
-              
-            fetch('/', {
-              method: 'POST',
-              headers: { "Content-Type": "application/x-www-form-urlencoded" },
-              body: new URLSearchParams(this.data).toString()
-            })
-            .then(() => {
-                this.message = 'Enviado - Nos pondremos en contacto contigo'
-              })
-            .catch(() => {
-              this.message = 'Ooops! Algo salio mal!'
-            })
-            .finally(() => {
-              this.loading = false;
-              this.buttonLabel = 'Enviar'
-            })
-          }
+      function submitMessage(name, email, message) {
+        if (!name || name.length == 0 || !email || !message || message.length == 0) {
+          return;
         }
+        let formElement = document.getElementById("contact");
+        let body = new URLSearchParams(new FormData(formElement)).toString();
+        return fetch("/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: body,
+        })
+          .then((response) => {
+            if (response.ok) {
+              formElement.reset();
+              alert("Thank you for your message!");
+            } else {
+              throw new Error(`Something went wrong: ${response.statusText}`);
+            }
+          })
+          .catch((error) => console.error(error));
       }
       //---
       var text = ["Hola", "Hallo", "Marhaba", "Senga yai", "Bonjour", "Buon giorno", "&#1047;&#1076;&#1088;&#1072;&#1074;&#1089;&#1090;&#1074;&#1091;&#1081;&#1090;&#1077;", "God dag", "Salut", "Olá", "&#12371;&#12435;&#12395;&#12385;&#12399;", "&#2344;&#2350;&#2360;&#2381;&#2340;&#2375;"];
