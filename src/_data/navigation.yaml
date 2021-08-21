@@ -1,9 +1,9 @@
 items:
-  - text: Inicio
+  - text: inicio
     url: https://modest-darwin-a50525.netlify.app/
-  - text: Servicios
+  - text: servicios
     url: "#servicios"
-  - text: Quienes Somos
+  - text: nosotros
     url: "#"
-  - text: Blog
+  - text: blog
     url: /blog
