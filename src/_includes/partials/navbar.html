@@ -15,7 +15,7 @@
         </button>
 
         <!--Menu-->
-        <div class="flex-grow w-full text-center lg:flex lg:items-center lg:w-auto " :class="{ 'block shadow-3xl': isOpen, 'hidden': !isOpen }" @click.away="isOpen = false" x-show.transition="true" x-show="open"
+        <div class="flex-grow w-full h-full text-center lg:flex lg:items-center lg:w-auto" :class="{ 'block shadow-3xl': isOpen, 'hidden': !isOpen }" @click.away="isOpen = false" x-show="open"
         x-transition:enter="transition ease-out duration-300"
         x-transition:enter-start="opacity-0 transform scale-90"
         x-transition:enter-end="opacity-100 transform scale-100"
@@ -25,10 +25,14 @@
 
             {% if navigation.items %}
 
-                <ul class="items-center justify-end flex-1 pt-6 lg:pt-0 list-reset lg:flex">
+                <ul class="items-center justify-end flex-1 h-full pt-6 lg:pt-0 list-reset lg:flex">
                     {% for item in navigation.items %}
-                        <li class="mr-3 nav__item">
-                            <a @click="isOpen = false" class="inline-block px-4 py-2 text-gray-500 no-underline text-ml hover:text-indigo-500" href="{{ item.url }}">{{item.text}}</a>
+                        <li class="h-full mr-3 nav__item" x-data="{ underline = false, actualLink = {{path}}, itemText = {{item.text}}, init(){
+                            if(this.actualLink == this.itemText){
+                                this.underline = true
+                            }
+                        } }">
+                            <a :class="underline ? 'actual-link' : ''" @click="isOpen = false" class="inline-block px-4 py-2 text-gray-500 capitalize text-ml" href="{{ item.url }}">{{item.text}}</a>
                         </li>
                     {% endfor %}
                 </ul>
