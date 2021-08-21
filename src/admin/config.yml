@@ -13,7 +13,7 @@ logo_url: https://i.imgur.com/X4JiEXc.jpg
 local_backend: true
 # publish_mode: editorial_workflow
 collections:
-  - label: "Shard Studio"
+  - label: "Blog"
     name: "blog"
     folder: "src/posts"
     create: true
