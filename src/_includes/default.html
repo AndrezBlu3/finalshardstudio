@@ -588,13 +588,12 @@
           <p class="mb-5 leading-relaxed text-gray-600">Escríbenos, nosotros no ponemos en contacto contigo.</p>
           <form id="contactForm" name="contacto" method="POST" data-netlify="true" x-data="contactForm()"  @submit.prevent="submitData">
             <input type="hidden" name="form-name" value="contactForm" />
-            <input name="name" placeholder="Tu nombre" type="text" class="w-full px-4 py-2 mb-4 text-base bg-white border border-gray-400 rounded focus:outline-none focus:border-blue-500" x-model="formData.name" required>
+            <input name="nombre" placeholder="Tu nombre" type="text" class="w-full px-4 py-2 mb-4 text-base bg-white border border-gray-400 rounded focus:outline-none focus:border-blue-500" x-model="formData.name" required>
             <input x-model="formData.email" name="email" class="w-full px-4 py-2 mb-4 text-base bg-white border border-gray-400 rounded focus:outline-none focus:border-blue-500" placeholder="Escribe tu correo electronico" type="email" required>
             <textarea x-model="formData.message" name="mensaje" class="w-full h-32 px-4 py-2 mb-4 text-base bg-white border border-gray-400 rounded resize-none focus:outline-none focus:border-blue-500" placeholder="Escribe tus datos de contacto"></textarea>
             <button x-text="buttonLabel" :disabled="loading" type="submit" class="px-6 py-2 text-lg text-white bg-blue-500 border-0 rounded focus:outline-none hover:ring hover:ring-blue-300 hover:bg-blue-700">Enviar</button>
-            
+            <p class="mt-3 text-xs text-gray-500" x-text="message"></p>
           </form>
-          <p class="mt-3 text-xs text-gray-500" x-text="message"></p>
         </div>
       </div>
     </section>
@@ -758,6 +757,7 @@
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/1.0.0/anime.min.js" ></script>
     <script>
+
       function encode(data) {
         return Object.keys(data)
             .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -792,7 +792,9 @@
               headers: { "Content-Type": "application/x-www-form-urlencoded" },
               body: encode({
                 "form-name": event.target.getAttribute("name"),
-                ...name
+                "nombre": event.target.getAttribute("name"),
+                "email": event.target.getAttribute("name"),
+                "mensaje": event.target.getAttribute("name"),
               })
             })
             .then(() => {
