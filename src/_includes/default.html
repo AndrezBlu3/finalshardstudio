@@ -781,14 +781,14 @@
               body: new URLSearchParams(this.formData).toString()
             })
             .then(() => {
-                this.message = 'Form sucessfully submitted!'
+                this.message = 'Enviado - Nos pondremos en contacto contigo'
               })
             .catch(() => {
-              this.message = 'Ooops! Something went wrong!'
+              this.message = 'Ooops! Algo salio mal!'
             })
             .finally(() => {
               this.loading = false;
-              this.buttonLabel = 'Submit'
+              this.buttonLabel = 'Enviar'
             })
           }
         }
