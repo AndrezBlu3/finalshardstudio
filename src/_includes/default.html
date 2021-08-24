@@ -581,9 +581,9 @@
     </section>
     <section class="relative text-gray-700 body-font">
       <div class="absolute inset-0 bg-blue-500">
-        
+        <canvas class="relative inset-0 block w-full h-full" id="starsbg"></canvas>
       </div>
-      <div class="container flex px-5 py-24 mx-auto">
+      <div id="contacto" class="container flex px-5 py-24 mx-auto">
         <div class="relative z-10 flex flex-col w-full p-8 mt-10 bg-white rounded-lg lg:w-1/3 md:w-1/2 md:ml-auto md:mt-0">
           <h2 class="mb-1 text-lg font-medium text-gray-900 title-font">Contacto</h2>
           <p class="mb-5 leading-relaxed text-gray-600">Escríbenos, nosotros no ponemos en contacto contigo.</p>
@@ -757,7 +757,121 @@
     <script src="/static/js/alpine.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/1.0.0/anime.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/1.0.0/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r127/three.min.js"></script>
+    <script>
+      const getRandomParticelPos = (particleCount) => {
+        const arr = new Float32Array(particleCount * 3);
+        for (let i = 0; i < particleCount; i++) {
+          arr[i] = (Math.random() - 0.5) * 10;
+        }
+        return arr;
+      };
+      const resizeRendererToDisplaySize = (renderer) => {
+        const canvas = renderer.domElement;
+        const width = canvas.clientWidth;
+        const height = canvas.clientHeight;
+        const needResize = canvas.width !== width || canvas.height !== height;
+        // resize only when necessary
+        if (needResize) {
+          //3rd parameter `false` to change the internal canvas size
+          renderer.setSize(width, height, false);
+        }
+        return needResize;
+      };
+      
+      // mouse
+      let mouseX = 0;
+      let mouseY = 0;
+      document.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+      
+      const main = () => {
+        const canvas = document.getElementById("starsbg");
+        const renderer = new THREE.WebGLRenderer({ canvas });
+        renderer.setClearColor(new THREE.Color("#1c1624"));
+        const scene = new THREE.Scene();
+      
+        // light source
+        const color = 0xffffff;
+        const intensity = 1;
+        const light = new THREE.DirectionalLight(color, intensity);
+        light.position.set(-1, 2, 4);
+        scene.add(light);
+      
+        // camera
+        const fov = 75,
+          aspect = 2,
+          near = 1.5,
+          far = 5;
+        const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+        camera.position.z = 2;
+      
+        // Geometry
+        const geometrys = [new THREE.BufferGeometry(), new THREE.BufferGeometry()];
+      
+        geometrys[0].setAttribute(
+          "position",
+          new THREE.BufferAttribute(getRandomParticelPos(350), 3)
+        );
+        geometrys[1].setAttribute(
+          "position",
+          new THREE.BufferAttribute(getRandomParticelPos(1500), 3)
+        );
+      
+        const loader = new THREE.TextureLoader();
+      
+        // material
+        const materials = [
+          new THREE.PointsMaterial({
+            size: 0.05,
+            map: loader.load("https://raw.githubusercontent.com/Kuntal-Das/textures/main/sp1.png"),
+            transparent: true
+            // color: "#ff0000"
+          }),
+          new THREE.PointsMaterial({
+            size: 0.095,
+            map: loader.load("https://raw.githubusercontent.com/Kuntal-Das/textures/main/sp2.png"),
+            transparent: true
+            // color: "#0000ff"
+          })
+        ];
+      
+        const starsT1 = new THREE.Points(geometrys[0], materials[0]);
+        const starsT2 = new THREE.Points(geometrys[1], materials[1]);
+        scene.add(starsT1);
+        scene.add(starsT2);
+      
+        const render = (time) => {
+          // time *= 0.001; //in seconds
+      
+          if (resizeRendererToDisplaySize(renderer)) {
+            const canvas = renderer.domElement;
+            // changing the camera aspect to remove the strechy problem
+            camera.aspect = canvas.clientWidth / canvas.clientHeight;
+            camera.updateProjectionMatrix();
+          }
+      
+          starsT1.position.x = mouseX * 0.0001;
+          starsT1.position.y = mouseY * -0.0001;
+      
+          starsT2.position.x = mouseX * 0.0001;
+          starsT2.position.y = mouseY * -0.0001;
+      
+          // Re-render the scene
+          renderer.render(scene, camera);
+          // loop
+          requestAnimationFrame(render);
+        };
+        requestAnimationFrame(render);
+      };
+      
+      main();
+      
+    </script>
+
     <script>
       let testForm = document.querySelector("#contact");
       
@@ -779,7 +893,7 @@
         });
       });
       //---
-      var text = ["Hola", "Hallo", "Marhaba", "Senga yai", "Bonjour", "Buon giorno", "&#1047;&#1076;&#1088;&#1072;&#1074;&#1089;&#1090;&#1074;&#1091;&#1081;&#1090;&#1077;", "God dag", "Salut", "Olá", "&#12371;&#12435;&#12395;&#12385;&#12399;", "&#2344;&#2350;&#2360;&#2381;&#2340;&#2375;"];
+      var text = ["Hola", "Hallo", "Marhaba", "Senga yai", "Bonjour", "Buon giorno", "Привет", "God dag", "Salut", "Olá", "こんにちは", "안녕", "สวัสดี", "你好呀"];
       var counter = 0;
       var elem = $("#greeting");
       setInterval(change, 3000);
