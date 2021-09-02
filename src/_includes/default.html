@@ -25,18 +25,18 @@
   </head>
   <body>
     {% include "./partials/navbar.html" %}
-    <section class="relative h-screen pb-0 overflow-hidden text-white bg-gray-800 body-font">
+    <section class="relative h-screen pb-0 overflow-hidden text-white bg-gray-800 body-font" style="min-height: 780px;">
       <canvas style="position:absolute;
       width: 100vw;
-      height: 100vh;" id="c">
+      height: 100vh; min-height: 780px;" id="c">
     </canvas>
     <div class="container relative flex" id="d">
       <div class="container flex flex-col items-center px-5 py-24 md:h-screen mx-aut md:flex-row" style="position:absolute;">
         <div class="flex flex-col items-center mb-16 text-left lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 md:items-start md:text-left md:mb-0">
           <h1 class="items-center inline-block w-full mb-4 font-medium text-white md:items-start">
-            <div class="flex items-center w-full mb-2 text-4xl text-center lg:text-7xl md:items-start md:text-left" id="greeting">Hello</div>
-            <div class="flex items-center w-full text-4xl text-center lg:text-7xl md:items-start md:text-left">this is
-            <strong class="ml-4 text-4xl text-transparent lg:text-7xl magic-text font-quicksand">
+            <div class="items-center block w-full mb-2 text-4xl text-center md:flex xl:text-7xl md:items-start sm:text-left" id="greeting">Hello</div>
+            <div class="items-center block w-full text-4xl text-center sm:flex xl:text-7xl md:items-start md:text-left">this is
+            <strong class="ml-3 text-4xl text-transparent md:ml-4 xl:text-7xl magic-text font-quicksand">
               {{settings.site}} &nbsp;
             </strong>
             </div>
@@ -59,9 +59,8 @@
         </div>
       </div>
     </div>
-    
-      
     </section>
+    
     <section id="servicios" class="text-gray-700 border-t border-gray-200 body-font">
       <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-col w-full mb-20 text-center">
