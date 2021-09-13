@@ -211,7 +211,103 @@ h3 {
 
 
 
+.bg-primary
+{
+  background-color: #002234;
+}
 
+.bg-primary-dark
+{
+  background-color: #001724;
+}
+
+.border-primary{
+  border-color: #002234;
+}
+
+.glitch {
+  font-size: 8.125em;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  position: relative;
+  
+  margin: 0;
+  color: #000;
+  letter-spacing: 5px;
+}
+.glitch:before, .glitch:after {
+  display: block;
+  content: attr(data-glitch);
+  text-transform: uppercase;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.8;
+}
+.glitch:after {
+  color: #f0f;
+  z-index: -2;
+}
+.glitch:before {
+  color: #0ff;
+  z-index: -1;
+}
+.glitch:hover:before {
+  -webkit-animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both 5;
+          animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both 5;
+}
+.glitch:hover:after {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both 5;
+}
+
+@media only screen and (max-width: 400px) {
+  .glitch {
+    font-size: 3em;
+  }
+}
+@-webkit-keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-5px, 5px);
+  }
+  40% {
+    transform: translate(-5px, -5px);
+  }
+  60% {
+    transform: translate(5px, 5px);
+  }
+  80% {
+    transform: translate(5px, -5px);
+  }
+  to {
+    transform: translate(0);
+  }
+}
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-5px, 5px);
+  }
+  40% {
+    transform: translate(-5px, -5px);
+  }
+  60% {
+    transform: translate(5px, 5px);
+  }
+  80% {
+    transform: translate(5px, -5px);
+  }
+  to {
+    transform: translate(0);
+  }
+}
 
 .home-card::after{
   @apply rounded-lg;
@@ -243,7 +339,7 @@ background: linear-gradient(90deg, rgba(250,255,49,1) 0%, rgba(203,52,18,1) 52%,
 .inline-flex.items-center.justify-center.flex-shrink-0.w-8.h-8.mr-3.text-white.bg-blue-500.rounded-full
 /* Syntax Highlighting*/
 
-body :not(pre) > code[class*="language-"],
+body :not(pre) > code[class*="language-"],s
 body pre[class*="language-"] {
   @apply bg-gray-800;
 }
