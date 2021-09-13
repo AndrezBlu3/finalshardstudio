@@ -7,7 +7,7 @@ backend:
   # repo: surjithctly/neat-starter
 media_folder: "src/static/img"
 public_folder: "/static/img"
-logo_url: https://i.imgur.com/X4JiEXc.jpg
+logo_url: https://i.imgur.com/GKyRb6S.png
 
 # Please run "npx netlify-cms-proxy-server" for local backend
 local_backend: true
@@ -20,11 +20,11 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Author", name: "author", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Titulo", name: "title", widget: "string" }
+      - { label: "Descripcion", name: "description", widget: "string" }
+      - { label: "Autor", name: "author", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime" }
+      - { label: "Contenido", name: "body", widget: "markdown" }
       - widget: select
         label: "tags"
         name: "tags"
@@ -43,7 +43,7 @@ collections:
           - label: Nav Items
             name: items
             widget: list
-            allow_add: false
+            allow_add: true
             collapsed: false
             fields:
               - { label: Titulo, name: text, widget: string }
